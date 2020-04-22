@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Addition/Subtraction App</title>
+
+    <style>
+        .body {
+            font-family: 'Irish Grover', cursive;
+        }
+        
+        .jumbotron {
+            text-align: center;
+        }
+        
+        .container {
+            font-size: 50px;
+        }
+        
+        .row {
+            padding: 5% 5% 5% 5%;
+        }
+        
+        .pink {
+            background: pink;
+            border: 1px solid purple;
+            text-align: center;
+        }
+        
+        #title {
+            font-size: 50px;
+        }
+        
+        .qNumber {
+            font-family: 'Roboto Slab', serif;
+            50px;
+        }
+        
+        input {
+            width: 200px;
+            text-align: center;
+        }
+        
+        .buttonBox {
+            text-align: left;
+        }
+        
+        #message {
+            text-align: center;
+            font-size: 100px;
+            background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+            background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="body">
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="title"><i class="fas fa-chalkboard"></i> Addition and Subtraction App</h1>
+            <h3>Practice Addition And Subtraction Here!</h3>
+        </div>
+        <div id="firstRow" class="row">
+            <div class="col-lg-1 pink checker">
+                <p id="checkPoint1"></p>
+            </div>
+            <div class="col-lg-1 pink qNumber">1.</div>
+            <div class="col-lg-3 pink" id="box1">q1</div>
+            <div class="col-lg-7 pink iBox">
+                <form id="answerBox1"><input id="answerInput1" type="text" autocomplete="off"><input id="subButton" type="submit" value="SUBMIT"></form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p id="message"></p>
+    </div>
+    <script>
+        var mathVar;
+        var questionPart1 = Math.floor(Math.random() * 10);
+        var questionPart2 = Math.floor(Math.random() * 10);
+        document.getElementById("box1").innerHTML = questionPart1 + " + " + questionPart2 + " =";
+        mathVar = questionPart1 + questionPart2;
+        console.log(mathVar);
+
+        document.getElementById("answerBox1").addEventListener("submit", checkAnswer);
+
+        function checkAnswer() {
+            event.preventDefault();
+            var response = document.getElementById("answerInput1").value;
+            console.log(response);
+            var integerConvert1 = parseInt(response, 10);
+            console.log(integerConvert1);
+            if (mathVar == integerConvert1) {
+                document.getElementById("checkPoint1").innerHTML = "√";
+                document.getElementById("message").innerHTML = "GREAT JOB!!!";
+            } else {
+                document.getElementById("checkPoint1").innerHTML = "X";
+                document.getElementById("message").innerHTML = "NICE TRY, BUT TRY AGAIN.";
+            }
+            setInterval(() => {
+                location.reload();
+            }, 2000);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
